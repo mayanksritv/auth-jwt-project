@@ -2,6 +2,8 @@
 
 A modern, minimal authentication project implementing secure registration, login, password hashing with bcrypt, signed JWT sessions, HTTP-only cookies, protected middleware and logout.
 
+## Live Application: https://auth-jwt-project-3zlg.onrender.com/
+
 ## Requirements covered
 
 - `POST /api/auth/register` — creates a user and hashes the password with bcrypt.
