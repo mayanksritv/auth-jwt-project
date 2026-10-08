@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Modern JWT authentication demo with bcrypt and HTTP-only cookies." />
+  <title>AuthVault — Secure Authentication</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <p class="eyebrow">SECURE AUTH</p>
+        <h1>Authentication, <span>done right.</span></h1>
+        <p class="subtitle">bcrypt password hashing · JWT sessions · HTTP-only cookies · protected APIs</p>
+      </div>
+      <div id="statusPill" class="status offline">Signed out</div>
+    </section>
+
+    <section class="grid">
+      <article class="card auth-card">
+        <div class="tabs" role="tablist">
+          <button class="tab active" data-tab="login">Sign in</button>
+          <button class="tab" data-tab="register">Create account</button>
+        </div>
+
+        <form id="loginForm" class="form active">
+          <div class="field">
+            <label for="loginEmail">Email</label>
+            <input id="loginEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="loginPassword">Password</label>
+            <input id="loginPassword" type="password" autocomplete="current-password" placeholder="••••••••" required />
+          </div>
+          <button class="primary" type="submit">Sign in <span>→</span></button>
+        </form>
+
+        <form id="registerForm" class="form">
+          <div class="field">
+            <label for="registerName">Name</label>
+            <input id="registerName" type="text" autocomplete="name" placeholder="Mayank" minlength="2" maxlength="60" required />
+          </div>
+          <div class="field">
+            <label for="registerEmail">Email</label>
+            <input id="registerEmail" type="email" autocomplete="email" placeholder="you@example.com" required />
+          </div>
+          <div class="field">
+            <label for="registerPassword">Password</label>
+            <input id="registerPassword" type="password" autocomplete="new-password" placeholder="At least 8 characters" minlength="8" required />
+          </div>
+          <button class="primary" type="submit">Create account <span>→</span></button>
+        </form>
+
+        <p id="message" class="message" aria-live="polite"></p>
+      </article>
+
+      <article class="card profile-card">
+        <div class="card-heading">
+          <div>
+            <p class="eyebrow">PROTECTED ROUTE</p>
+            <h2>Your session</h2>
+          </div>
+          <span class="route">GET /api/protected/profile</span>
+        </div>
+
+        <div id="signedOut" class="empty-state">
+          <div class="icon">🔒</div>
+          <strong>No active session</strong>
+          <p>Sign in to call the protected endpoint.</p>
+        </div>
+
+        <div id="profile" class="profile hidden">
+          <div class="avatar" id="avatar">A</div>
+          <div class="identity">
+            <h3 id="profileName">—</h3>
+            <p id="profileEmail">—</p>
+          </div>
+          <button id="logoutBtn" class="secondary">Log out</button>
+          <div class="details">
+            <div><span>User ID</span><code id="profileId">—</code></div>
+            <div><span>Created</span><code id="profileCreated">—</code></div>
+          </div>
+        </div>
+      </article>
+    </section>
+
+    <footer>
+      <span>JWT is never exposed to JavaScript.</span>
+      <span>·</span>
+      <span>Passwords are stored as bcrypt hashes.</span>
+    </footer>
+  </main>
+  <script src="/app.js"></script>
+</body>
+</html>
